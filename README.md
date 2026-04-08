@@ -1,7 +1,7 @@
 # Highlight element spaces
 
 ## What it does?
-A very simple debug script that you can embed in your website to display the margin and padding values for elements on your site. That's it.
+A very simple debug script that you can embed in your website to display the margin and padding values for any kind of specified elements on your site. That's it.
 
 ![Screenshot](Screenshot.png)
 
