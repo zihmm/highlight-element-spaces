@@ -4,6 +4,8 @@
     const attr = document.body.getAttribute('data-highlight-element-spaces');
     if (!attr) return;
 
+    console.log(attr);
+
     const selectors = attr.split(',').map(s => s.trim()).filter(Boolean);
 
     const BORDER_COLOR = '#FFBBEB';
@@ -81,6 +83,41 @@
 
         return wrapper;
     }
+
+    // Legend in top-right corner
+    const legend = document.createElement('div');
+    legend.style.cssText = [
+        'position:fixed',
+        'top:5px',
+        'right:5px',
+        'display:flex',
+        'flex-direction:row',
+        'gap:2px',
+        'z-index:9999999',
+        'pointer-events:none',
+        'user-select:none',
+    ].join(';');
+
+    function makeLegendBadge(label, bg) {
+        const el = document.createElement('span');
+        el.textContent = label;
+        el.style.cssText = [
+            'display:inline-block',
+            'font-size:' + FONT_SIZE,
+            'padding:' + BOX_PADDING,
+            'background:' + bg,
+            'color:' + FONT_COLOR,
+            'line-height:1',
+            'white-space:nowrap',
+            'font-family:monospace',
+            'border-radius:2px',
+        ].join(';');
+        return el;
+    }
+
+    legend.appendChild(makeLegendBadge('padding', PADDING_BG));
+    legend.appendChild(makeLegendBadge('margin', MARGIN_BG));
+    document.body.appendChild(legend);
 
     selectors.forEach(function (selector) {
         const elements = document.querySelectorAll(selector);
